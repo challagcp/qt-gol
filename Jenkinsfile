@@ -1,12 +1,12 @@
 pipeline {
-    agent { label 'ltelog'}
+    agent { label 'ltecomm'}
     triggers {
         cron('59 23 * * *')
     }
     stages {
         stage('scm') {
             steps {
-                git branch: 'qa', url:'https://github.com/KhajasCICDSamples/qt-gol.git'        
+                git branch: 'qa', url:'https://github.com/challagcp/qt-gol.git'        
             }
         }
         stage('build') {

@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('scm') {
             steps {
-                git branch: 'developer', url:'https://github.com/KhajasCICDSamples/qt-gol.git'        
+                git branch: 'developer', url:'https://github.com/challagcp/qt-gol.git'        
             }
         }
         stage('build') {
@@ -31,13 +31,6 @@ pipeline {
                 waitForQualityGate abortPipeline: true, credentialsId: 'SONAR_TOKEN'
               }
             }
-        }
-    }
-    post {
-        always {
-            mail to: 'learningthoughts.in@gmail.com', 
-                subject: "Status of pipeline ${currentBuild.fullDisplayName}",
-                body: "${env.BUILD_URL} has result ${currentBuild.result}"
         }
     }
 }
